@@ -9,22 +9,23 @@
         <MenuTree :nodes = "item.children"></MenuTree>
       </el-submenu>
       <el-menu-item :index="item.path + ''" v-else>
-        <i :class="item.iconCls"></i>{{item.name}}
+        <i :class="item.iconCls"></i>
+        <span slot="title">{{item.name}}</span>
       </el-menu-item>
     </template>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'MenuTree',
-  props: {
-    nodes: {
-      type: Array,
-      required: true
+  export default {
+    name: 'MenuTree',
+    props: {
+      nodes: {
+        type: Array,
+        required: true
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>

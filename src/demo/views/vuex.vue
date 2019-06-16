@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div style="padding: 30px 0">
 		Clicked: {{ getCount }} times
 		<button @click="increment">+</button>
 		<button @click="decrement">-</button>

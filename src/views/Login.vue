@@ -2,7 +2,6 @@
     <div class="login-container">
         <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm">
             <h3 class="title">{{ $t("login.title") }}{{ flagString }}</h3>
-
             <el-form-item prop="account">
                 <el-input type="text" v-model="ruleForm2.account" auto-complete="off" :placeholder="$t('login.hintAccount')"></el-input>
             </el-form-item>

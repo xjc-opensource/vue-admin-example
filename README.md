@@ -27,6 +27,7 @@ github地址：[基于vue的后台框架](https://github.com/xjc-opensource/vue-
   npm install --save vuex
   npm install --save axios
   npm install --save js-md5
+  npm install --save font-awesome
   
   npm install --save mockjs 
   npm install --save axios-mock-adapter
@@ -120,4 +121,4 @@ vue全局变量 GlobalEnvParams 取不同环境的配置变量
 * element: http://element-cn.eleme.io/#/zh-CN
 * element component: http://element-cn.eleme.io/#/zh-CN/component/installation
 * element theme: https://elementui.github.io/theme-chalk-preview/#/zh-CN
-* vue-admin: https://taylorchen709.github.io/vue-admin/
+* vue-admin: https://github.com/taylorchen709/vue-admin

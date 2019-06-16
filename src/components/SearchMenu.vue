@@ -1,7 +1,7 @@
 <template>
     <div class="selectMenu">
-        <el-row class="demo-autocomplete" style="margin: 10px 0;">
-            <el-col :span="20" :offset="2">
+        <el-row class="demo-autocomplete" style="margin: 10px 15px 10px 0">
+            <el-col :span="22" :offset="2">
                 <el-autocomplete
                 class="inline-input"
                 v-model="searchMenuKey"
@@ -77,7 +77,11 @@ export default {
 
 <style scoped>
   .selectMenu {
-    position: fixed; top: 60px; left: 0; z-index: 4; background: #fff;
+      position: fixed; top: 60px; left: 0; z-index: 4;
+      border-color: #e4e4e4;
+      border-right-width: 1px;
+      border-right-style: solid;
+      width: 230px;
   }
 </style>
 

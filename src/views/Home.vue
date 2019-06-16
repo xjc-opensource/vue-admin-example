@@ -29,7 +29,7 @@
             <el-col :span="24" class="main">
                 <aside :class="collapsed?'menu-collapsed':'menu-expanded'">
                     <SearchMenu :span="24" :collapse="collapsed" :class="collapsed?'SearchMenu-hide':'SearchMenu-show'" :menuList="this.nodes"></SearchMenu>
-                    <!--导航菜单-->
+                        <!--导航菜单-->
                     <el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
                              unique-opened router :collapse="collapsed" >
                         <!--<template v-for="(item,index) in nodes" >-->
@@ -196,6 +196,7 @@
                     }
                 }
             }
+
             .logo {
                 width:230px;
                 height:60px;
@@ -238,15 +239,17 @@
             aside {
                 flex:0 0 230px;
                 width: 230px;
-
                 overflow-y: auto;
                 overflow-x: hidden;
+
+
                 // position: absolute;
                 // top: 0px;
                 // bottom: 0px;
                 .el-menu{
                     height: 100%;
                 }
+
                 .collapsed{
 
                     width:60px;

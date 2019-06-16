@@ -4,7 +4,7 @@ const LoginUsers = [
     {
         id: 1
         ,userId: 1
-        ,username: 'admin'
+        ,userName: 'admin'
         ,password: 'e10adc3949ba59abbe56e057f20f883e'
         ,avatar: ''
         ,name: 'mockjs'
@@ -23,7 +23,7 @@ export default {
                 let user = null;
                 setTimeout(() => {
                         let hasUser = LoginUsers.some(u => {
-                            if (u.username === userName && u.password === userPwd) {
+                            if (u.userName === userName && u.password === userPwd) {
                                 user = JSON.parse(JSON.stringify(u));
                                 user.password = undefined;
                                 return true;

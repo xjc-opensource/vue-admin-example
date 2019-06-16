@@ -4,8 +4,12 @@ function getOutputDir() {
     return process.env.VUE_APP_FLAG === 'mock' ? 'docs': 'dist';
 }
 
+function getPublicPath() {
+    return process.env.VUE_APP_FLAG === 'mock' ? '/vue-admin-example/': './';
+}
+
 module.exports = {
-    publicPath: './',           // 根域上下文目录,默认'/'
+    publicPath: getPublicPath(),           // 根域上下文目录,默认'/'
     outputDir: getOutputDir(),  // 构建输出目录
     assetsDir: 'assets',        //该目录相对于outputDir,放置打包后生成的静态资源（js、css、img、fonts）的目录.
     indexPath : 'index.html',   //该目录相对于outputDir,指定生成的index.html的输出路径，也可以是一个绝对路径。
