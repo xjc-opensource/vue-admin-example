@@ -1,0 +1,68 @@
+{
+  "name": "vue-admin-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "build-dev": "vue-cli-service build --mode dev",
+    "build-prod": "vue-cli-service build --mode prod",
+    "build-test": "vue-cli-service build --mode test",
+    "build-mock": "vue-cli-service build --mode mock"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "axios-mock-adapter": "^1.16.0",
+    "babel-preset-es2015": "^6.24.1",
+    "core-js": "^2.6.5",
+    "echarts": "^4.2.1",
+    "element": "^0.1.4",
+    "element-ui": "^2.4.5",
+    "js-md5": "^0.7.3",
+    "node-sass": "^4.12.0",
+    "vue": "^2.6.10",
+    "vue-i18n": "^8.11.2",
+    "vue-router": "^3.0.6",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "mockjs": "^1.0.1-beta3",
+    "sass-loader": "^7.1.0",
+    "vue-cli-plugin-element": "^1.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off",
+      "no-unreachable": "off",
+      "object-shorthand": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
