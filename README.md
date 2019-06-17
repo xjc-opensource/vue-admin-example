@@ -38,6 +38,10 @@ github地址：[基于vue的后台框架](https://github.com/xjc-opensource/vue-
   
   vue add element
   npm install --sava-dev babel-plugin-component
+  npm install --sava-dev compression-webpack-plugin
+  npm install --save-dev uglifyjs-webpack-plugin
+  npm install --save-dev optimize-css-assets-webpack-plugin
+  npm install --save-dev HtmlWebpackPlugin
 
 ``` 
 
@@ -122,3 +126,6 @@ vue全局变量 GlobalEnvParams 取不同环境的配置变量
 * element component: http://element-cn.eleme.io/#/zh-CN/component/installation
 * element theme: https://elementui.github.io/theme-chalk-preview/#/zh-CN
 * vue-admin: https://github.com/taylorchen709/vue-admin
+
+link:  
+   weixin: chinaxjc208

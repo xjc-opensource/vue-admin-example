@@ -1,4 +1,7 @@
 //const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 function getOutputDir() {
     return process.env.VUE_APP_FLAG === 'mock' ? 'docs': 'dist';
@@ -8,6 +11,8 @@ function getPublicPath() {
     return process.env.VUE_APP_FLAG === 'mock' ? '/vue-admin-example/': './';
 }
 
+const sourceMap = false;
+
 module.exports = {
     publicPath: getPublicPath(),           // 根域上下文目录,默认'/'
     outputDir: getOutputDir(),  // 构建输出目录
@@ -16,12 +21,49 @@ module.exports = {
     lintOnSave: false,          // 是否开启eslint保存检测，有效值：ture | false | 'error'
     runtimeCompiler: false,     // 运行时版本是否需要编译
     transpileDependencies: [],  // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名
-    productionSourceMap: false, // 是否在构建生产包时生成 sourceMap 文件，false将提高构建速度
+    productionSourceMap: sourceMap, // 是否在构建生产包时生成 sourceMap 文件，false将提高构建速度
     filenameHashing : true, //
     pages : undefined, //多页应用模式下构建应用
     //
-    //configureWebpack: config => { // webpack配置，值位对象时会合并配置，为方法时会改写配置
-    // },
+    configureWebpack: config => { // webpack配置，值位对象时会合并配置，为方法时会改写配置
+        config.plugins.push( new UglifyJsPlugin({
+            uglifyOptions: {
+                warnings: false,
+                compress: {
+                    drop_debugger: true,
+                    drop_console: true,
+                },
+            },
+            sourceMap: sourceMap,
+            parallel: true,
+            cache: true,
+            extractComments: 'all'
+        }));
+
+        config.plugins.push(
+            new OptimizeCSSPlugin({
+
+                cssProcessor: require('cssnano'), //引入cssnano配置压缩选项
+                cssProcessorOptions: {
+                    safe: true,
+                    discardComments: { removeAll: true }
+                },
+                canPrint: false //是否将插件信息打印到控制台
+            })
+        );
+
+        config.plugins.push(
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+                algorithm: 'gzip',
+                test: /\.js$|\.html$|\.json$|\.css/,
+                threshold: 20480, //对超过20k的数据压缩
+                minRatio:0.8, // 只有压缩率小于这个值的资源才会被处理
+                deleteOriginalAssets: false // 删除原文件
+            })
+        );
+     },
+
     //css
     css: {
         // 配置高于chainWebpack中关于css loader的配置
@@ -67,5 +109,4 @@ module.exports = {
     parallel: require('os').cpus().length > 1,
     // https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
     pwa: {},
-    pluginOptions: {}, // 第三方插件配置
 };
