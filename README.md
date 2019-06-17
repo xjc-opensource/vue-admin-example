@@ -38,12 +38,16 @@ github地址：[基于vue的后台框架](https://github.com/xjc-opensource/vue-
   
   vue add element
   npm install --sava-dev babel-plugin-component
+ 
+```
+
+not need:
+~~~
   npm install --sava-dev compression-webpack-plugin
   npm install --save-dev uglifyjs-webpack-plugin
   npm install --save-dev optimize-css-assets-webpack-plugin
   npm install --save-dev HtmlWebpackPlugin
-
-``` 
+~~~ 
 
      
 2.3 调整配置

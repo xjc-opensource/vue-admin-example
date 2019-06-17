@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import echarts from 'echarts'
+    import echarts from '@/plugins/echarts'
 
     export default {
         data() {

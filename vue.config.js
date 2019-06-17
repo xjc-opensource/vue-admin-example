@@ -1,7 +1,4 @@
 //const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-const CompressionPlugin = require("compression-webpack-plugin");
 
 function getOutputDir() {
     return process.env.VUE_APP_FLAG === 'mock' ? 'docs': 'dist';
@@ -11,7 +8,12 @@ function getPublicPath() {
     return process.env.VUE_APP_FLAG === 'mock' ? '/vue-admin-example/': './';
 }
 
+//const prod = process.env.NODE_ENV === 'production'? true: false;
 const sourceMap = false;
+const gzip = false;
+const optimize = false;
+
+console.log(process.env.NODE_ENV);
 
 module.exports = {
     publicPath: getPublicPath(),           // 根域上下文目录,默认'/'
@@ -26,42 +28,50 @@ module.exports = {
     pages : undefined, //多页应用模式下构建应用
     //
     configureWebpack: config => { // webpack配置，值位对象时会合并配置，为方法时会改写配置
-        config.plugins.push( new UglifyJsPlugin({
-            uglifyOptions: {
-                warnings: false,
-                compress: {
-                    drop_debugger: true,
-                    drop_console: true,
+        if (optimize) {
+            const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+            config.plugins.push(new UglifyJsPlugin({
+                uglifyOptions: {
+                    warnings: false,
+                    compress: {
+                        drop_debugger: true,
+                        drop_console: true,
+                    },
                 },
-            },
-            sourceMap: sourceMap,
-            parallel: true,
-            cache: true,
-            extractComments: 'all'
-        }));
+                sourceMap: sourceMap,
+                parallel: true,
+                cache: true,
+                extractComments: 'all'
+            }));
+        }
 
-        config.plugins.push(
-            new OptimizeCSSPlugin({
+        if (optimize) {
+            const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+            config.plugins.push(
+                new OptimizeCSSPlugin({
+                    cssProcessor: require('cssnano'), //引入cssnano配置压缩选项
+                    cssProcessorOptions: {
+                        safe: true,
+                        discardComments: {removeAll: true}
+                    },
+                    canPrint: false //是否将插件信息打印到控制台
+                })
+            );
+        }
 
-                cssProcessor: require('cssnano'), //引入cssnano配置压缩选项
-                cssProcessorOptions: {
-                    safe: true,
-                    discardComments: { removeAll: true }
-                },
-                canPrint: false //是否将插件信息打印到控制台
-            })
-        );
-
-        config.plugins.push(
-            new CompressionPlugin({
-                filename: '[path].gz[query]',
-                algorithm: 'gzip',
-                test: /\.js$|\.html$|\.json$|\.css/,
-                threshold: 20480, //对超过20k的数据压缩
-                minRatio:0.8, // 只有压缩率小于这个值的资源才会被处理
-                deleteOriginalAssets: false // 删除原文件
-            })
-        );
+        if (gzip) {
+            const CompressionPlugin = require("compression-webpack-plugin");
+            config.plugins.push(
+                new CompressionPlugin({
+                    filename: '[path].gz[query]',
+                    algorithm: 'gzip',
+                    test: /\.js$|\.html$|\.json$|\.css/,
+                    threshold: 20480, //对超过20k的数据压缩
+                    minRatio: 0.8, // 只有压缩率小于这个值的资源才会被处理
+                    deleteOriginalAssets: false // 删除原文件
+                })
+            );
+        }
      },
 
     //css
