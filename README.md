@@ -38,6 +38,8 @@ github地址：[基于vue的后台框架](https://github.com/xjc-opensource/vue-
   
   vue add element
   npm install --sava-dev babel-plugin-component
+  
+  ``npm install --save vue-plugin-load-script``
  
 ```
 
