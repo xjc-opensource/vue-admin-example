@@ -1,1 +1,54 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/vue-admin-example/favicon.ico><title>vue-admin-example</title><link href=/vue-admin-example/assets/css/chunk-157438c0.8c1acce7.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-22fa324f.54b7b9f7.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-42bc9475.486b20ff.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-59a2a372.0ac09304.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-7fbe20da.e797ac9b.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-93eb577a.062fa302.css rel=prefetch><link href=/vue-admin-example/assets/js/chunk-157438c0.b3b49f62.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-22fa324f.80d5a82e.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-2d0c4a22.e350ea2e.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-2d0c8638.2a9f4305.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-42bc9475.9fc37d66.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-59a2a372.ecf44e9d.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-7fbe20da.2eb5786e.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-93eb577a.f381c533.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-d36865ea.84adaa7b.js rel=prefetch><link href=/vue-admin-example/assets/css/app.08eee86a.css rel=preload as=style><link href=/vue-admin-example/assets/css/chunk-vendors.0980310c.css rel=preload as=style><link href=/vue-admin-example/assets/js/app.bbb67688.js rel=preload as=script><link href=/vue-admin-example/assets/js/chunk-vendors.8f16f50d.js rel=preload as=script><link href=/vue-admin-example/assets/css/chunk-vendors.0980310c.css rel=stylesheet><link href=/vue-admin-example/assets/css/app.08eee86a.css rel=stylesheet></head><body><noscript><strong>We're sorry but vue-admin-example doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/vue-admin-example/assets/js/chunk-vendors.8f16f50d.js></script><script src=/vue-admin-example/assets/js/app.bbb67688.js></script></body></html>
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1" name=viewport><meta content=0 http-equiv=Expires><meta content=no-cache http-equiv=Pragma><meta content=no-cache http-equiv=Cache-control><meta content=no-cache http-equiv=Cache><link href=/vue-admin-example/favicon.ico rel=icon><title>vue-admin-example</title><link href=/vue-admin-example/assets/css/chunk-157438c0.8c1acce7.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-22fa324f.54b7b9f7.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-59a2a372.0ac09304.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-6b15a250.5822c0a1.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-78496d96.8c015dee.css rel=prefetch><link href=/vue-admin-example/assets/css/chunk-93eb577a.062fa302.css rel=prefetch><link href=/vue-admin-example/assets/js/chunk-157438c0.d403b5cd.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-22fa324f.80d5a82e.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-2d0c4a22.e350ea2e.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-2d0c8638.2a9f4305.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-59a2a372.ecf44e9d.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-6b15a250.f5fbcfdc.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-78496d96.746307a4.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-93eb577a.f381c533.js rel=prefetch><link href=/vue-admin-example/assets/js/chunk-d36865ea.84adaa7b.js rel=prefetch><link href=/vue-admin-example/assets/css/app.fd3327a4.css rel=preload as=style><link href=/vue-admin-example/assets/css/chunk-vendors.0980310c.css rel=preload as=style><link href=/vue-admin-example/assets/js/app.15875e2c.js rel=preload as=script><link href=/vue-admin-example/assets/js/chunk-vendors.8f16f50d.js rel=preload as=script><link href=/vue-admin-example/assets/css/chunk-vendors.0980310c.css rel=stylesheet><link href=/vue-admin-example/assets/css/app.fd3327a4.css rel=stylesheet></head><style type=text/css>#Loading {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        -webkit-transform: translateY(-50%) translateX(-50%);
+        transform: translateY(-50%) translateX(-50%);
+        z-index: 100;
+    }
+
+    @-webkit-keyframes ball-beat {
+        50% {
+            opacity: 0.2;
+            -webkit-transform: scale(0.75);
+            transform: scale(0.75);
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    @keyframes ball-beat {
+        50% {
+            opacity: 0.2;
+            -webkit-transform: scale(0.75);
+            transform: scale(0.75);
+        }
+
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    .ball-beat > div {
+        background-color: #E6A23C;
+        width: 15px;
+        height: 15px;
+        border-radius: 100% !important;
+        margin: 2px;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        display: inline-block;
+        -webkit-animation: ball-beat 0.7s 0s infinite linear;
+        animation: ball-beat 0.7s 0s infinite linear;
+    }
+
+    .ball-beat > div:nth-child(2n-1) {
+        -webkit-animation-delay: 0.35s !important;
+        animation-delay: 0.35s !important;
+    }</style><body><noscript><strong>We're sorry but vue-admin-example doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=Loading><div class="loader-inner ball-beat"><div></div><div></div><div></div></div></div><div id=app></div><script src=/vue-admin-example/assets/js/chunk-vendors.8f16f50d.js></script><script src=/vue-admin-example/assets/js/app.15875e2c.js></script></body></html>
