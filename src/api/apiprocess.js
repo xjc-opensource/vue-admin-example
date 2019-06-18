@@ -1,7 +1,7 @@
-
 import { Message } from 'element-ui'
-import { GlobalEnvParams } from '../core/envconfig';
-import i18n from "../i18n/i18n"
+import { GlobalEnvParams } from '@/core/envconfig';
+import session from '@/core/session';
+import i18n from "@/i18n/i18n"
 
 function getApiRoot() {
     return GlobalEnvParams.API_ROOT;
@@ -18,17 +18,11 @@ function getResponseCodeString(code) {
 }
 
 function getUserToken() {
-    let user = sessionStorage.getItem('user');
-    let userToken = "";
-    if (user) {
-        user = JSON.parse(user);
-        userToken = user.token || '';
-    }
-    return userToken;
+    return session.getSessionToken();
 }
 
 function processNoAuth(){
-    sessionStorage.removeItem('user')
+    session.deleteSession();
 }
 
 export default {

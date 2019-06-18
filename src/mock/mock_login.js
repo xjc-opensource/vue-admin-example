@@ -3,12 +3,12 @@ import {getResultError, getResultSuccess} from './mock_response';
 const LoginUsers = [
     {
         id: 1
-        ,userId: 1
-        ,userName: 'admin'
-        ,password: 'e10adc3949ba59abbe56e057f20f883e'
-        ,avatar: ''
-        ,name: 'mockjs'
-        ,token: 'xx'
+        , userId: 1
+        , userName: 'admin'
+        , password: 'e10adc3949ba59abbe56e057f20f883e'
+        , avatar: ''
+        , name: 'mockjs'
+        , token: 'xx'
     }
 ];
 
@@ -28,15 +28,15 @@ export default {
                                 user.password = undefined;
                                 return true;
                             }
+                            return false;
                         });
-
                         if (hasUser) {
                             resolve([200, getResultSuccess(user, '请求成功')]);
                         } else {
                             resolve([200, getResultError('账号或密码错误')]);
                         }
                     },
-                    1000);
+                    2000);
             });
         });
 

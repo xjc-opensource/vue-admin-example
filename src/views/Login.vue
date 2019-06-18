@@ -35,12 +35,11 @@
 <script>
     import md5 from 'js-md5';
     import api from '@/api/api';
+    import Session from '../core/session';
 
     export default {
         data() {
             return {
-                audioSrc:'',
-                isAudioShow:false,
                 flagString: this.GlobalEnvParams.ENV_TITLE,
                 logining: false,
                 ruleForm2: {
@@ -84,7 +83,7 @@
                 api.postUrl("/sys/login", loginParams).then(res => {
                     this.logining = false;
                     if ((res.data)) {
-                        sessionStorage.setItem('user', JSON.stringify(res.data));
+                        Session.saveSession(res.data);
                         this.$router.push({path: '/index/main'});
                     }
                     this.getCaptcha();

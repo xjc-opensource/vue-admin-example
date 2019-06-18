@@ -2,7 +2,6 @@ import axios from 'axios';
 import apiProcess from './apiprocess';
 import {RESP_CODE} from './responecode.js';
 
-
 axios.defaults.timeout = 60*1000; //响应时间
 //axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; //配置请求头
 //axios.defaults.baseURL = base;   //配置接口地址

@@ -70,9 +70,10 @@
 <script>
     import api from '../api/api';
     import MenuTree from './MenuTree';
-    import SearchMenu from "../components/SearchMenu";
+    import SearchMenu from '../components/SearchMenu';
     import DemoMenu from '../demo/demoMenu';
     import avatarImg from '../assets/user.png';
+    import Session from '../core/session';
 
     export default {
         components: {
@@ -95,7 +96,7 @@
             }
         },
         created() {
-            let data = JSON.parse(sessionStorage.getItem('menuList'));
+            let data = Session.getSessionMenuList();
             this.nodes.push({"id":185,"parentId":0,"name":"main","path":"/index/main","type":1,"menuType":null,"iconCls":"el-icon-star-on","status":1,"menuStatus":null,"isSelectButton":null,"children":null});
             if (null != data) {
                 this.nodes.push(...data);
@@ -125,17 +126,14 @@
                 this.$confirm('确认退出吗?', '提示', {
                     //type: 'warning'
                 }).then(() => {
-                    let userParams = sessionStorage.getItem('user');
-                    if (userParams) {
-                        userParams = JSON.parse(userParams);
+                    let userParams = Session.getSessionData();
+                    if (userParams != null) {
                         let reqObj = {};
                         reqObj.userId = userParams.userId;
                         reqObj.token = userParams.token;
                         api.postUrl("/sys/logout", reqObj).then(() => {
-                            sessionStorage.removeItem('user');
-                            sessionStorage.removeItem('roleList');
-                            sessionStorage.removeItem('dataRoleList');
-                            sessionStorage.removeItem('menuList');
+                            Session.deleteSession();
+
                             _this.$router.push('/login');
                         }, () => {
                             this.$message({type: 'error', message: '退出登录失败'
@@ -153,9 +151,8 @@
             }
         },
         mounted() {
-            let user = sessionStorage.getItem('user');
-            if (user) {
-                user = JSON.parse(user);
+            let user = Session.getSessionData();
+            if (user != null) {
                 this.sysUserName = user.userName || '';
                 this.sysUserAvatar = user.avatar || avatarImg;
             }

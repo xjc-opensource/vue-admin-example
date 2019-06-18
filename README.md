@@ -40,6 +40,7 @@ github地址：[基于vue的后台框架](https://github.com/xjc-opensource/vue-
   npm install --sava-dev babel-plugin-component
   
   ``npm install --save vue-plugin-load-script``
+  ``npm install --save vue-lazyload``
  
 ```
 
@@ -132,6 +133,8 @@ vue全局变量 GlobalEnvParams 取不同环境的配置变量
 * element component: http://element-cn.eleme.io/#/zh-CN/component/installation
 * element theme: https://elementui.github.io/theme-chalk-preview/#/zh-CN
 * vue-admin: https://github.com/taylorchen709/vue-admin
+* vue-devtools: https://github.com/vuejs/vue-devtools
+* vue-devtools-setup: https://www.jianshu.com/p/6c1a4d18e002
 
-link:  
+link: 
    weixin: chinaxjc208

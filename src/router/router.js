@@ -1,23 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import Session from '../core/session'
 
-Vue.use(VueRouter)
-
+Vue.use(VueRouter);
 const router = new VueRouter({
     routes
-})
-
+});
 
 router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
-        sessionStorage.removeItem('user');
-        sessionStorage.removeItem('menuList');
-        sessionStorage.removeItem('roleList');
+        Session.deleteSession();
     }
-    let user = JSON.parse(sessionStorage.getItem('user'));
-
-    if (!user && to.path !== '/login') {
+    let isAuthSession = Session.isAuthSession();
+    if (!isAuthSession && to.path !== '/login') {
         next({ path: '/login' })
     } else {
         if (to.path) {

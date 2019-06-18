@@ -10,12 +10,12 @@ export default {
         mock.onGet('/user/list').reply(config => {
             let {name} = config.params;
             let mockUsers = _Users.filter(user => {
-                if (name && user.name.indexOf(name) == -1) return false;
+                if (name && user.name.indexOf(name) === -1) return false;
                 return true;
             });
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve([200, getResultSuccess({ users: mockUsers}, "")]);
+                    resolve([200, getResultSuccess({users: mockUsers}, "")]);
                 }, 1000);
             });
         });
@@ -24,7 +24,7 @@ export default {
         mock.onGet('/user/listpage').reply(config => {
             let {page, name, pageSize} = config.params;
             let mockUsers = _Users.filter(user => {
-                if (name && user.name.indexOf(name) == -1) return false;
+                if (name && user.name.indexOf(name) === -1) return false;
                 return true;
             });
             let total = mockUsers.length;
@@ -41,30 +41,30 @@ export default {
 
         //删除用户
         mock.onPost('/user/delete').reply(config => {
-            let { id } = JSON.parse(config.data);
+            let {id} = JSON.parse(config.data);
             _Users = _Users.filter(u => u.id !== id);
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve([200, getResultSuccess(null,"删除成功")]);
+                    resolve([200, getResultSuccess(null, "删除成功")]);
                 }, 500);
             });
         });
 
         //批量删除用户
         mock.onPost('/user/batchdelete').reply(config => {
-            let { ids } = JSON.parse(config.data);
+            let {ids} = JSON.parse(config.data);
             ids = ids.split(',');
             _Users = _Users.filter(u => !ids.includes(u.id));
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve([200, getResultSuccess(null,"删除成功")]);
+                    resolve([200, getResultSuccess(null, "删除成功")]);
                 }, 500);
             });
         });
 
         //编辑用户
         mock.onPost('/user/edit').reply(config => {
-            let { id, name, addr, age, birth, sex } = JSON.parse(config.data);
+            let {id, name, addr, age, birth, sex} = JSON.parse(config.data);
             _Users.some(u => {
                 if (u.id === id) {
                     u.name = name;
@@ -74,17 +74,18 @@ export default {
                     u.sex = sex;
                     return true;
                 }
+                return false;
             });
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve([200, getResultSuccess(null,"编辑成功")]);
+                    resolve([200, getResultSuccess(null, "编辑成功")]);
                 }, 500);
             });
         });
 
         //新增用户
         mock.onPost('/user/add').reply(config => {
-            let { name, addr, age, birth, sex } = JSON.parse(config.data);
+            let {name, addr, age, birth, sex} = JSON.parse(config.data);
             _Users.push({
                 id: Mock.Random.guid(),
                 name: name,
@@ -95,7 +96,7 @@ export default {
             });
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    resolve([200, getResultSuccess(null,"新增成功")]);
+                    resolve([200, getResultSuccess(null, "新增成功")]);
                 }, 500);
             });
         });
