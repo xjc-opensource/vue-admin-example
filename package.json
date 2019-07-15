@@ -51,7 +51,8 @@
     "rules": {
       "no-console": "off",
       "no-unreachable": "off",
-      "object-shorthand": "off"
+      "object-shorthand": "off",
+      "no-extend-native": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
